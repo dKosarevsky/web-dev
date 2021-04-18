@@ -1,16 +1,34 @@
-from fastapi import FastAPI
+import logging
+from pathlib import Path
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-# Use this to serve a static/index.html
-from starlette.responses import RedirectResponse
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-from .api.movies import movies
-from .api.db import metadata, database, engine
+from api.custom_logging import CustomizeLogger
+from api.movies import movies
+from api.db import metadata, database, engine
+
+logger = logging.getLogger(__name__)
+config_path = Path(__file__).with_name("logging_config.json")
 
 metadata.create_all(engine)
 
-app = FastAPI(title="BMSTU. WEB-dev. Lab#001")
 
-app.mount("/static", StaticFiles(directory="app/static/html"), name="static")
+def create_app() -> FastAPI:
+    app_ = FastAPI(title='BMSTU. WEB-dev. Labs')
+    logger_ = CustomizeLogger.make_logger(config_path)
+    app_.logger = logger_
+
+    return app_
+
+
+app = create_app()
+
+app.mount("/static", StaticFiles(directory="static/html"), name="static")
+app.mount("/img", StaticFiles(directory="static/img"), name="img")
+
+templates = Jinja2Templates(directory="static/html")
 
 
 @app.on_event("startup")
@@ -23,19 +41,19 @@ async def shutdown():
     await database.disconnect()
 
 
-@app.get("/", tags=["static"])
-async def read_index():
-    return RedirectResponse(url="/static/hack.txt")
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("hack.txt", {"request": request})
 
 
-@app.get("/hack", tags=["static"])
-async def read_index_from_hack():
-    return RedirectResponse(url="/static/index.html")
+@app.get("/hack", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/index", tags=["static"])
-async def read_index_from_index():
-    return RedirectResponse(url="/static/index.html")
+@app.get("/index", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 app.include_router(movies, prefix='/api/v1/movies', tags=['movies'])
