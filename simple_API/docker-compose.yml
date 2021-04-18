@@ -3,24 +3,34 @@ version: '3.7'
 services:
   movie_service:
     build: .
-    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    container_name:
+      movie_service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --access-log
     volumes:
       - ./:/app/
     ports:
       - 8001:8000
-    environment:
-      - DATABASE_URI=postgresql://movie_db_username:movie_db_password@movie_db/movie_db_dev
+    env_file:
+      - .env
+    networks:
+      - movies_db_network
+      - movies_nginx_network
 
   movie_db:
     image: postgres:12.1-alpine
+    container_name:
+      movie_db
     volumes:
       - postgres_data_movie:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=movie_db_username
-      - POSTGRES_PASSWORD=movie_db_password
-      - POSTGRES_DB=movie_db_dev
-    expose:
-      - 5432
+    env_file:
+      - .env.db
+    networks:
+      - movies_db_network
 
 volumes:
   postgres_data_movie:
+networks:
+  movies_db_network:
+    driver: bridge
+  movies_nginx_network:
+    driver: bridge
