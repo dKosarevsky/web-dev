@@ -1,0 +1,1 @@
+Отчёт по [ссылке](../lab_report/lab_report_003.md)
