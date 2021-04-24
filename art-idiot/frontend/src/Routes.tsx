@@ -3,7 +3,16 @@ import { Switch, Route } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Home, Login, SignUp, Protected, PrivateRoute } from './views';
+import {
+    Home,
+    Login,
+    SignUp,
+    Protected,
+    Zebrate,
+    AiChat,
+    VoiceAiChat,
+    PrivateRoute
+} from './views';
 import { Admin } from './admin';
 import { logout } from './utils/auth';
 
@@ -46,6 +55,9 @@ export const Routes: FC = () => {
             }}
           />
           <PrivateRoute path="/protected" component={Protected} />
+          <PrivateRoute path="/zebrate" component={Zebrate} />
+          <PrivateRoute path="/ai-chat" component={AiChat} />
+          <PrivateRoute path="/voice-ai-chat" component={VoiceAiChat} />
           <Route exact path="/" component={Home} />
         </header>
       </div>

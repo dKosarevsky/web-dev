@@ -44,6 +44,15 @@ export const Home: FC = () => {
       <a className={classes.link} href="/admin">
         Admin Dashboard
       </a>
+      <a className={classes.link} href="/zebrate">
+        Zebrate
+      </a>
+      <a className={classes.link} href="/ai-chat">
+        AI Chat
+      </a>
+      <a className={classes.link} href="/voice-ai-chat">
+        Voice AI Chat
+      </a>
       <a className={classes.link} href="/protected">
         Protected Route
       </a>
