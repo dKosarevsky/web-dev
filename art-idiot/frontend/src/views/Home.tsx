@@ -53,9 +53,6 @@ export const Home: FC = () => {
       <a className={classes.link} href="/voice-ai-chat">
         Voice AI Chat
       </a>
-      <a className={classes.link} href="/protected">
-        Protected Route
-      </a>
       {isAuthenticated() ? (
         <a className={classes.link} href="/logout">
           Logout
