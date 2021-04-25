@@ -16,7 +16,12 @@ from app import tasks
 from datetime import datetime as dt
 
 app = FastAPI(
-    title=config.PROJECT_NAME, docs_url="/api/docs", openapi_url="/api"
+    title=config.PROJECT_NAME,
+    description=config.DESCRIPTION,
+    version=config.VERSION,
+    openapi_tags=config.TAGS_METADATA,
+    docs_url="/api/docs",
+    openapi_url="/api",
 )
 
 
