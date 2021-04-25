@@ -29,7 +29,7 @@ export const AiChat: FC = () => {
       </button>
       <br/>
 
-      <textarea placeholder={message} />
+      <textarea placeholder={message ? message : error} />
       <button>Поделиться</button>
     </>
   );
