@@ -4,10 +4,9 @@ import {useHistory} from 'react-router';
 import Preloader from "../../components/Preloader";
 
 import * as keys from "../../routers/keys";
-// import "antd/dist/antd.css";
 import "./styles/index.css";
 
-import {Menu, Dropdown, Button} from 'antd';
+import {Button} from 'antd';
 
 import {ReactComponent as PersonIcon} from '../Icons/Person.svg';
 import {ReactComponent as LogoutIcon} from '../Icons/Logout.svg';
