@@ -2,7 +2,11 @@ from fastapi import FastAPI, Depends, status
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from starlette.requests import Request
+
 import uvicorn
+import logging
+from app.utils.custom_logging import CustomizeLogger
+from pathlib import Path
 
 from app.api.api_v1.routers.users import users_router
 from app.api.api_v1.routers.auth import auth_router
@@ -15,6 +19,9 @@ from app import tasks
 
 from datetime import datetime as dt
 
+logger = logging.getLogger(__name__)
+config_path = Path(__file__).with_name("logging_config.json")
+
 app = FastAPI(
     title=config.PROJECT_NAME,
     description=config.DESCRIPTION,
@@ -23,6 +30,9 @@ app = FastAPI(
     docs_url="/api/docs",
     openapi_url="/api",
 )
+
+app_logger_ = CustomizeLogger.make_logger(config_path)
+app.logger = app_logger_
 
 
 @app.middleware("http")
@@ -56,7 +66,9 @@ async def example_task():
 
 
 # Routers
+# app.include_router(zebrate_router, prefix="/api/v1", tags=["zebrate"])
 app.include_router(ai_chat_router, prefix="/api/v1", tags=["ai-chat"])
+# app.include_router(voice_ai_chat_router, prefix="/api/v1", tags=["voice-ai-chat"])
 app.include_router(
     users_router,
     prefix="/api/v1",
