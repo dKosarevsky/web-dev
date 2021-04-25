@@ -11,15 +11,3 @@ export const getMessage = async () => {
 
   return Promise.reject('Failed to get message from backend');
 };
-
-export const getRuGPT3Answer = async () => {
-  const response = await fetch(BACKEND_URL + '/rugpt3');
-
-  const data = await response.json();
-
-  if (data.message) {
-    return data.message;
-  }
-
-  return Promise.reject('Failed to get message from backend');
-};
