@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/lab": "^4.0.0-alpha.54",
     "antd": "^4.15.2",
+    "axios": "^0.21.1",
     "jwt-decode": "^3.0.0",
     "ra-data-json-server": "^3.5.2",
     "ra-data-simple-rest": "^3.3.2",
