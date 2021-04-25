@@ -15,7 +15,7 @@ import {
 } from './views';
 import {Admin} from './admin';
 import {logout} from './utils/auth';
-import {HeaderLogOut} from "./components/HeaderLogOut";
+import {HeaderLogOut} from "./components/HeaderLogOut/HeaderLogOut";
 
 import * as keys from "./routers/keys";
 
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     backgroundColor: '#282c34',
-    minHeight: '100vh',
+    minHeight: '80vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -63,10 +63,10 @@ export const Routes: FC = () => {
               <Route path={keys.LOGIN} component={Login}/>
               <Route path={keys.SIGNUP} component={SignUp}/>
               <Route path={keys.LOGOUT} render={() => {
-                  logout();
-                  history.push('/');
-                  return null;
-                }}
+                logout();
+                history.push('/');
+                return null;
+              }}
               />
               <PrivateRoute path={keys.ZEBRATE} component={Zebrate}/>
               <PrivateRoute path={keys.AI_CHAT} component={AiChat}/>

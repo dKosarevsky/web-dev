@@ -1,0 +1,123 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.art-idiot-header-container {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 16px;
+  bottom: 0;
+
+  background: #FFFFFF;
+}
+
+.art-idiot-header-left, .art-idiot-header-right {
+  display: inline-block;
+}
+
+.art-idiot-header-left {
+  padding: 0 0 24px 9.31%;
+}
+
+.art-idiot-header-right {
+  padding: 4px 9.17% 0 0;
+  margin-top: -13px;
+  float: right;
+}
+
+.art-idiot-person-ico {
+  margin: 0 8px -4px 32px;
+  color: var(--color-one);
+}
+
+.art-idiot-person-ico > path:hover {
+  fill: var(--color-six);
+}
+
+.art-idiot-person-name {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-one);
+}
+
+.art-idiot-logout-ico {
+  cursor: pointer;
+  margin: 0 0 -4px 8px;
+}
+
+.art-idiot-logout-ico:hover {
+  stroke: var(--color-six);
+}
+
+.art-idiot-header-answers, .art-idiot-header-zebras {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.art-idiot-header-zebras {
+  margin: 0 0 0 24px;
+}
+
+.inter-lineage {
+  margin: -8px 0 0 0
+}
+
+.art-idiot-header-answers-text, .art-idiot-header-zebras-text {
+  font-size: 12px;
+  line-height: 18px;
+
+  color: var(--color-one);
+  opacity: 0.3;
+}
+
+.art-idiot-header-count-text {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: var(--color-one);
+}
+
+.art-idiot-q-ico {
+  margin: 0 0 -14px 4px;
+}
+
+.art-idiot-medium-btn-admin {
+  margin: 0 0 0 32px;
+  padding: 13px 24px;
+}
+
+.art-idiot-bell-ico {
+  margin: 0 0 -8px 26px;
+}
+
+.art-idiot-bell-ico > path:hover {
+  fill: var(--color-six);
+}
+
+.art-idiot-small-num-ico {
+  margin: 0 0 5px -10px;
+}
+
+.art-idiot-small-num-ico-num {
+  position: absolute;
+  margin: 0 0 15px -13px;
+  font-family: var(--font-primary);
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.art-idiot-header-bottom {
+  margin: -13px 0 0 0;
+}
+
+.art-idiot-header-menu {
+  padding: 0 0 0 9.31%;
+  display: inline-block;
+}
+
+.art-idiot-text-btn-menu {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0 32px 0 0;
+}

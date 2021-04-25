@@ -43,18 +43,6 @@ export const Home: FC = () => {
           Error: <code>{error}</code>
         </p>
       )}
-      <a className={classes.link} href={keys.ADMIN}>
-        Admin Dashboard
-      </a>
-      <a className={classes.link} href={keys.ZEBRATE}>
-        Zebrate
-      </a>
-      <a className={classes.link} href={keys.AI_CHAT}>
-        AI Chat
-      </a>
-      <a className={classes.link} href={keys.VOICE_AI_CHAT}>
-        Voice AI Chat
-      </a>
       {isAuthenticated() ? (
         <a className={classes.link} href={keys.LOGOUT}>
           Logout

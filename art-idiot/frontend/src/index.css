@@ -33,3 +33,147 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.art-idiot-logo {
+    /* Logo */
+    align-items: center;
+    padding: 4px 16px;
+
+    width: 110px;
+    height: 40px;
+
+    /* Grey background */
+    background: var(--color-three);
+    border-radius: 10px;
+
+    /* Grey */
+    color: var(--color-two);
+}
+
+.art-idiot-logo:hover {
+    cursor: pointer;
+}
+
+.art-idiot-tab, .ant-tabs-nav-container {
+    /* Таб */
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    text-align: center;
+}
+
+.art-idiot-input {
+    height: 60px;
+
+    background: var(--color-seven);
+    border: 1px solid var(--color-two);
+    border-radius: 30px;
+}
+
+.art-idiot-large-btn {
+    /* Large Button */
+    height: 60px;
+    background: var(--color-four);
+    border-color: var(--color-four);
+    border-radius: 50px;
+
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--color-one);
+}
+
+.art-idiot-medium-btn {
+    /* Medium Button */
+    height: 40px;
+    background: var(--color-four);
+    border-color: var(--color-four);
+    border-radius: 30px;
+
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--color-one);
+}
+
+.art-idiot-text-btn {
+    /* Text Button */
+    height: 40px;
+    border-color: transparent;
+    border-radius: 30px;
+
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--color-one);
+}
+
+.art-idiot-large-btn:hover, .art-idiot-medium-btn:hover {
+    background: var(--color-five);
+    border-color: var(--color-five);
+    color: var(--color-one);
+}
+
+.art-idiot-text-btn:hover {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-six);
+
+    cursor: pointer;
+}
+
+.art-idiot-large-btn:disabled, .art-idiot-medium-btn:disabled {
+    background: transparent;
+    border-color: var(--color-four);
+    color: var(--color-two);
+}
+
+.art-idiot-text-btn:disabled, .art-idiot-text-btn:active, .art-idiot-text-btn:before {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-two);
+}
+
+.art-idiot-link-btn {
+    /* Link Button */
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--color-six);
+}
+
+.art-idiot-checkbox {
+    color: var(--color-one);
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.art-idiot-content-wrapper {
+    background: var(--color-seven);
+
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
+.art-idiot-dropdown {
+    color: var(--color-one);
+    cursor: pointer;
+}
