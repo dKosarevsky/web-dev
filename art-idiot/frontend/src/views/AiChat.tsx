@@ -1,6 +1,19 @@
-import React, { FC } from 'react';
+import React, {FC, useState} from 'react';
+import {getRuGPT3Answer} from "../utils";
 
 export const AiChat: FC = () => {
+  const [message, setMessage] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
+  const queryBackend = async () => {
+    try {
+      const message = await getRuGPT3Answer();
+      setMessage(message);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
   return (
     <>
       <h1>AI chat</h1>
@@ -8,8 +21,16 @@ export const AiChat: FC = () => {
       <br/>
       <h3>Напишите сообщение и дождитесь ответ от искусственного интелекта</h3>
 
-        <input/>
-        <button>Поделиться</button>
-      </>
+      <input/>
+      <button
+        onClick={() => queryBackend()}
+      >
+        Отправить соообщение
+      </button>
+      <br/>
+
+      <textarea placeholder={message} />
+      <button>Поделиться</button>
+    </>
   );
 };
