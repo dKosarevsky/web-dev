@@ -1,0 +1,13 @@
+.art-idiot-footer-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 32px;
+    bottom: 16px;
+
+    background: #FFFFFF;
+}
+
+.art-idiot-tg-ico {
+    padding: 0 0 0 96px;
+}

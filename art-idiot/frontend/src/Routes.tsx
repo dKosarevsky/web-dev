@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {connect, Provider} from "react-redux";
-import {Switch, Router, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {useHistory} from 'react-router';
 import {makeStyles} from '@material-ui/core/styles';
 
@@ -16,6 +16,7 @@ import {
 import {Admin} from './admin';
 import {logout} from './utils/auth';
 import {HeaderLogOut} from "./components/HeaderLogOut/HeaderLogOut";
+import {FooterContacts} from "./components/FooterContacts/FooterContacts";
 
 import * as keys from "./routers/keys";
 
@@ -74,7 +75,7 @@ export const Routes: FC = () => {
           </div>
         </Switch>
         <Footer>
-          TODO Футер
+          <FooterContacts/>
         </Footer>
       </Layout>
       {/*</PersistGate>*/}

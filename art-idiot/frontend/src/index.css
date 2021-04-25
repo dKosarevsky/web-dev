@@ -145,7 +145,11 @@ code {
     /* Link Button */
     font-size: 16px;
     line-height: 16px;
+}
+
+.art-idiot-link-btn:hover {
     color: var(--color-six);
+    cursor: pointer;
 }
 
 .art-idiot-checkbox {
