@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, status
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from starlette.requests import Request
 import uvicorn
 
@@ -11,6 +13,7 @@ from app.core.auth import get_current_active_user
 from app.core.celery_app import celery_app
 from app import tasks
 
+from datetime import datetime as dt
 
 app = FastAPI(
     title=config.PROJECT_NAME, docs_url="/api/docs", openapi_url="/api"
@@ -23,6 +26,16 @@ async def db_session_middleware(request: Request, call_next):
     response = await call_next(request)
     request.state.db.close()
     return response
+
+
+@app.options("/", status_code=status.HTTP_200_OK)
+async def get_options():
+    data = {
+        "Allow": "OPTIONS, GET, POST, PUT, DELETE",
+        "Date": f'{dt.now().strftime("%A, %d %B %Y %H:%M:%S")} GMT',
+    }
+    json_compatible_item_data = jsonable_encoder(data)
+    return JSONResponse(content=json_compatible_item_data)
 
 
 @app.get("/api/v1")
