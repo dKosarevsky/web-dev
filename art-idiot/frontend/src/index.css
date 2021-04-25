@@ -18,20 +18,24 @@
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.art-idiot-h1 {
+    font-size: 80px;
 }
 
 .art-idiot-logo {
@@ -64,7 +68,9 @@ code {
 }
 
 .art-idiot-input {
+    padding: 0 32px;
     height: 60px;
+    width: 75vw;
 
     background: var(--color-seven);
     border: 1px solid var(--color-two);

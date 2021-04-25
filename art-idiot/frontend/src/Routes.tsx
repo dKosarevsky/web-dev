@@ -30,14 +30,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   header: {
-    backgroundColor: '#282c34',
-    minHeight: '80vh',
+    minHeight: '85vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-    color: 'white',
   },
 }));
 

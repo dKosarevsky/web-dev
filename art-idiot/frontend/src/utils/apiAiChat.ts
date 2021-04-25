@@ -5,7 +5,7 @@ const chat_api = axios.create({
   baseURL: BACKEND_URL,
 })
 
-export const postRuGPT3Questions = async (question: string) => {
+export const sendRuGPT3Question = async (question: string) => {
   if (!(question.length > 0)) {
     throw new Error('Попробуйте задать чуть-более внушительный вопрос =)');
   }
