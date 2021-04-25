@@ -99,6 +99,11 @@ export const HeaderLogOut: FC = () => {
 
         <div className="art-idiot-header-menu">
           <span className="art-idiot-text-btn art-idiot-text-btn-menu" onClick={() => {
+            history.replace(keys.HOME);
+          }}>
+            Main
+          </span>
+          <span className="art-idiot-text-btn art-idiot-text-btn-menu" onClick={() => {
             history.replace(keys.ZEBRATE);
           }}>
             Zebrate
