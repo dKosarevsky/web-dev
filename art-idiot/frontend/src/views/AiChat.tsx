@@ -1,13 +1,18 @@
 import React, {FC, useState} from 'react';
-import {getRuGPT3Answer} from "../utils";
+import {postRuGPT3Questions} from "../utils";
+
+import {Input, Button} from 'antd';
+
+const {TextArea} = Input;
 
 export const AiChat: FC = () => {
+  const [question, setQuestion] = useState<string>('');
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   const queryBackend = async () => {
     try {
-      const message = await getRuGPT3Answer();
+      const message = await postRuGPT3Questions(question);
       setMessage(message);
     } catch (err) {
       setError(err);
@@ -21,16 +26,19 @@ export const AiChat: FC = () => {
       <br/>
       <h3>Напишите сообщение и дождитесь ответ от искусственного интелекта</h3>
 
-      <input/>
-      <button
+      <Input
+        placeholder={"Введите вопрос"}
+        onChange={event => setQuestion(event.target.value)}
+      />
+      <Button
         onClick={() => queryBackend()}
       >
         Отправить соообщение
-      </button>
+      </Button>
       <br/>
 
-      <textarea placeholder={message ? message : error} />
-      <button>Поделиться</button>
+      <TextArea placeholder={`Artificial idiot: ${message ? message : error}`}/>
+      <Button>Скопировать ответ</Button>
     </>
   );
 };
