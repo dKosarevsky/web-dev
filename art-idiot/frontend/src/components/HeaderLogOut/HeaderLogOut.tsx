@@ -1,8 +1,6 @@
 import React, {FC, useState} from 'react';
 import {useHistory} from 'react-router';
 
-import Preloader from "../../components/Preloader";
-
 import * as keys from "../../routers/keys";
 import "./styles/index.css";
 
@@ -25,7 +23,6 @@ export const HeaderLogOut: FC = () => {
 
   return (
     <>
-      {/*<Preloader loading={isRequest}/>*/}
       <div className="art-idiot-header-container">
 
         <div className="art-idiot-header-left">
@@ -120,7 +117,6 @@ export const HeaderLogOut: FC = () => {
         </div>
 
       </div>
-      {/*</Preloader/>*/}
     </>
   )
 };
