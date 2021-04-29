@@ -11,6 +11,7 @@ from pathlib import Path
 from app.api.api_v1.routers.users import users_router
 from app.api.api_v1.routers.auth import auth_router
 from app.api.api_v1.routers.ai_chat import ai_chat_router
+from app.api.api_v1.routers.zebrate import zebrate_router
 from app.core import config
 from app.db.session import SessionLocal
 from app.core.auth import get_current_active_user
@@ -66,7 +67,7 @@ async def example_task():
 
 
 # Routers
-# app.include_router(zebrate_router, prefix="/api/v1", tags=["zebrate"])
+app.include_router(zebrate_router, prefix="/api/v1", tags=["zebrate"])
 app.include_router(ai_chat_router, prefix="/api/v1", tags=["ai-chat"])
 # app.include_router(voice_ai_chat_router, prefix="/api/v1", tags=["voice-ai-chat"])
 app.include_router(

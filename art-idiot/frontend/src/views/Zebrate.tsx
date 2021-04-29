@@ -2,6 +2,7 @@ import React, {FC, useState} from 'react';
 import {Loader} from "./Loader";
 
 import {Input, Button, Tabs, Row, Col} from 'antd';
+import {sendZebrateImg} from "../utils";
 
 const {TabPane} = Tabs;
 
@@ -10,6 +11,21 @@ export const Zebrate: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const default_horse = require("../images/horse.jpeg");
   const default_zebra = require("../images/zebra.jpeg");
+  const [horse, setHorse] = useState<boolean>(false);
+  const [zebra, setZebra] = useState<boolean>(false);
+
+  const queryBackend = async () => {
+    try {
+      setIsLoading(true);
+      // const ZebrateAnswer = await sendZebrateImg(horse);
+      const ZebrateAnswer = await sendZebrateImg("success");
+      setZebra(ZebrateAnswer);
+      setIsLoading(false);
+    } catch (err) {
+      setError(err);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -49,17 +65,18 @@ export const Zebrate: FC = () => {
               <Button
                 className="art-idiot-large-btn"
                 type="primary"
-                onClick={() => {
-                }}
+                onClick={() => {queryBackend()}}
               >
                 Отправить
               </Button>
             </Col>
           </Row>
 
-          <br/><img src={default_horse} alt="horse"/>
-
-
+          <br/>
+          <img
+            src={horse ? horse : default_horse}
+            alt="horse"
+          />
         </TabPane>
 
         <TabPane tab="Загрузка с локального устройства" key="2">
@@ -85,7 +102,12 @@ export const Zebrate: FC = () => {
         Генерация зебры
       </Button>
 
-      <br/><img src={default_zebra} alt="zebra"/><br/>
+      <br/>
+      <img
+        src={zebra ? zebra : default_zebra}
+        alt="zebra"
+      />
+      <br/>
 
       <Row justify="space-between">
         <Button
