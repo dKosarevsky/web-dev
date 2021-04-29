@@ -77,6 +77,11 @@ code {
     border-radius: 30px;
 }
 
+.art-idiot-input:focus {
+    outline: none;
+    border-color: var(--color-six);
+}
+
 .art-idiot-large-btn {
     /* Large Button */
     height: 60px;
@@ -88,6 +93,7 @@ code {
     font-size: 16px;
     line-height: 16px;
     color: var(--color-one);
+    padding: 22px 32px;
 }
 
 .art-idiot-medium-btn {
@@ -101,6 +107,7 @@ code {
     font-size: 14px;
     line-height: 14px;
     color: var(--color-one);
+    padding: 13px 24px;
 }
 
 .art-idiot-text-btn {
