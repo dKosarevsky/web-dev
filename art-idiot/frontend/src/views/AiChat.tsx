@@ -11,17 +11,17 @@ export const AiChat: FC = () => {
   const [question, setQuestion] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const [isLoading, setisLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const queryBackend = async () => {
     try {
-      setisLoading(true);
+      setIsLoading(true);
       const AiAnswer = await sendRuGPT3Question(question);
       setAnswer(AiAnswer);
-      setisLoading(false);
+      setIsLoading(false);
     } catch (err) {
       setError(err);
-      setisLoading(false);
+      setIsLoading(false);
     }
   };
 

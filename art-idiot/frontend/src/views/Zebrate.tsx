@@ -7,7 +7,7 @@ const {TabPane} = Tabs;
 
 export const Zebrate: FC = () => {
   const [error, setError] = useState<string>('');
-  const [isLoading, setisLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const default_horse = require("../images/horse.jpeg");
   const default_zebra = require("../images/zebra.jpeg");
 
