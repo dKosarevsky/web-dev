@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {FC, useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 
-import { getMessage } from '../utils/api';
-import { isAuthenticated } from '../utils/auth';
+import {getMessage} from '../utils/api';
+import {isAuthenticated} from '../utils/auth';
 
 import * as keys from "../routers/keys";
+import {Button} from "antd";
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -28,21 +29,6 @@ export const Home: FC = () => {
 
   return (
     <>
-      {!message && !error && (
-        <a className={classes.link} href="#" onClick={() => queryBackend()}>
-          Click to make request to backend
-        </a>
-      )}
-      {message && (
-        <p>
-          <code>{message}</code>
-        </p>
-      )}
-      {error && (
-        <p>
-          Error: <code>{error}</code>
-        </p>
-      )}
       {isAuthenticated() ? (
         <a className={classes.link} href={keys.LOGOUT}>
           Logout
@@ -57,6 +43,20 @@ export const Home: FC = () => {
           </a>
         </>
       )}
+
+      <Button
+        className="pushable"
+        style={{
+          margin: "18px 0 40px 0"
+        }}
+        // onClick={() => queryBackend()}
+      >
+        <span className="shadow"></span>
+        <span className="edge"></span>
+        <span className="front">
+          Нажми Меня
+        </span>
+      </Button>
     </>
   );
 };
