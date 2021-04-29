@@ -6,3 +6,4 @@ export const LOGOUT = '/logout';
 export const LOGIN = '/login';
 export const SIGNUP = '/signup';
 export const ADMIN = '/admin';
+export const AUTH = '/auth';
