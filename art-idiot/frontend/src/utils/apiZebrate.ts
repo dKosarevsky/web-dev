@@ -5,12 +5,12 @@ const zebrate_api = axios.create({
   baseURL: BACKEND_URL,
 })
 
-export const sendZebrateImg = async (image: string) => {
-  // if (!(question.length > 0)) {
-  //   throw new Error('Попробуйте задать чуть-более внушительный вопрос =)');
-  // }
-  const response = await zebrate_api.post(`/zebrate`, {
-    image: image
+export const sendZebrateLink = async (link: string) => {
+  if (!(link.length > 0)) {
+    throw new Error('Попробуйте ввести ссылку на изображение');
+  }
+  const response = await zebrate_api.post(`/zebrate_link`, {
+    link: link
   }, {
     headers: {
       'Content-Type': 'application/json',
@@ -18,6 +18,6 @@ export const sendZebrateImg = async (image: string) => {
   })
 
   if (response.data) {
-    return response.data.message;
+    return response.data.zebra_img;
   }
 }
