@@ -5,6 +5,7 @@ import * as keys from "../../routers/keys";
 import "./styles/index.css";
 
 import {ReactComponent as TelegramIcon} from '../Icons/Telegram.svg';
+import {ReactComponent as ArtIdiotIcon} from "../Icons/ArtIdiot.svg";
 
 export const FooterContacts: FC = () => {
   const history = useHistory();
@@ -21,7 +22,7 @@ export const FooterContacts: FC = () => {
               history.replace(keys.HOME);
             }}
           >
-            ЛОГОТИП
+            <ArtIdiotIcon/>
           </span>
       </div>
 

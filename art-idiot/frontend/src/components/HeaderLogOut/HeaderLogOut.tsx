@@ -11,6 +11,7 @@ import {ReactComponent as LogoutIcon} from '../Icons/Logout.svg';
 import {ReactComponent as QuestionIcon} from '../Icons/Question.svg';
 import {ReactComponent as BellIcon} from '../Icons/Bell.svg';
 import {ReactComponent as SmallNumberIcon} from '../Icons/SmallNumber.svg';
+import {ReactComponent as ArtIdiotIcon} from '../Icons/ArtIdiot.svg';
 
 
 export const HeaderLogOut: FC = () => {
@@ -32,7 +33,7 @@ export const HeaderLogOut: FC = () => {
               history.replace(keys.HOME);
             }}
           >
-            ЛОГОТИП
+            <ArtIdiotIcon/>
           </span>
 
           <PersonIcon className="art-idiot-person-ico"/>

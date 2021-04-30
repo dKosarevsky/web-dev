@@ -45,13 +45,6 @@ code {
 
     width: 110px;
     height: 40px;
-
-    /* Grey background */
-    background: var(--color-three);
-    border-radius: 10px;
-
-    /* Grey */
-    color: var(--color-two);
 }
 
 .art-idiot-logo:hover {
