@@ -29,6 +29,10 @@ export const Home: FC = () => {
 
   return (
     <>
+      <h1 className="art-idiot-h1">
+        Artificial idiot
+      </h1>
+
       {isAuthenticated() ? (
         <a className={classes.link} href={keys.LOGOUT}>
           Logout
@@ -49,7 +53,7 @@ export const Home: FC = () => {
         style={{
           margin: "18px 0 40px 0"
         }}
-        // onClick={() => queryBackend()}
+        onClick={() => queryBackend()}
       >
         <span className="shadow"></span>
         <span className="edge"></span>
