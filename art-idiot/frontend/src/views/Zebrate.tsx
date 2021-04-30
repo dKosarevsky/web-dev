@@ -59,7 +59,7 @@ export const Zebrate: FC = () => {
               <Loader
                 loading={isLoading}
                 message={''}
-                css={''}
+                css={'margin-left: -100%; height: 200%; width: 200%;'}
                 size={80}
               /> :
               null

@@ -34,7 +34,7 @@ export const AiChat: FC = () => {
               <Loader
                 loading={isLoading}
                 message={''}
-                css={''}
+                css={'margin-left: -50%; height: 100%; width: 100%;'}
                 size={80}
               /> :
               null

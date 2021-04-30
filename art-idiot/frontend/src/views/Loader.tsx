@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import {HashLoader} from "react-spinners";
+import {ClimbingBoxLoader} from "react-spinners";
 //https://www.davidhu.io/react-spinners/
 
 type LoaderType = {
@@ -9,14 +9,14 @@ type LoaderType = {
   size: number;
 };
 
-const cssDefault = 'margin-left: -50%; position: absolute; height: 100%; width: 100%; display: flex; z-index: 999; align-items: center; justify-content: center; background: #ffffffc7;'
+const cssDefault = 'position: absolute; display: flex; z-index: 999; align-items: center; justify-content: center; background: #ffffffc7;'
 
 export const Loader: FC<LoaderType> = ({loading, message, css, size}) => {
 
   return loading ? (
     <div className='overlay-content'>
       <div className='wrapper'>
-        <HashLoader
+        <ClimbingBoxLoader
           css={cssDefault + css}
           size={size}
           color={"#0099FF"}
