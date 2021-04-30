@@ -1,31 +1,54 @@
 import React, {FC, useState} from 'react';
 import {Loader} from "./Loader";
 
-import {Input, Button, Tabs, Row, Col} from 'antd';
-import {sendZebrateImg} from "../utils";
+import {Input, Button, Tabs, Row, Col, Upload, message} from 'antd';
+import {InboxOutlined} from '@ant-design/icons';
+import {sendZebrateLink} from "../utils";
 
 const {TabPane} = Tabs;
+const {Dragger} = Upload;
+
 
 export const Zebrate: FC = () => {
   const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const default_horse = require("../images/horse.jpeg");
   const default_zebra = require("../images/zebra.jpeg");
-  const [horse, setHorse] = useState<boolean>(false);
-  const [zebra, setZebra] = useState<boolean>(false);
+  const [userLink, setUserLink] = useState<string>('');
+  const [horse, setHorse] = useState<string>('');
+  const [zebra, setZebra] = useState<string>('');
+
+  // const props = {
+  //   name: 'file',
+  //   multiple: false,
+  //   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  //   onChange(info: { file: { name?: any; status?: any; }; fileList: any; }) {
+  //     const {status} = info.file;
+  //     if (status !== 'uploading') {
+  //       console.log(info.file, info.fileList);
+  //     }
+  //     if (status === 'done') {
+  //       message.success(`${info.file.name} file uploaded successfully.`);
+  //     } else if (status === 'error') {
+  //       message.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   },
+  // };
+
 
   const queryBackend = async () => {
     try {
       setIsLoading(true);
-      // const ZebrateAnswer = await sendZebrateImg(horse);
-      const ZebrateAnswer = await sendZebrateImg("success");
-      setZebra(ZebrateAnswer);
+      const ZebraImg = await sendZebrateLink(userLink);
+      console.log(ZebraImg)
+      setZebra(ZebraImg);
       setIsLoading(false);
     } catch (err) {
       setError(err);
       setIsLoading(false);
     }
   };
+
 
   return (
     <>
@@ -48,7 +71,7 @@ export const Zebrate: FC = () => {
       </h1>
       <h2>Превратим вашу лошадь в зебру</h2>
       <br/>
-      <h3>Способ загрузки изображения</h3>
+      <h3>Способ передачи изображения</h3>
 
       <Tabs defaultActiveKey="1" onChange={() => {
       }}>
@@ -60,37 +83,32 @@ export const Zebrate: FC = () => {
                 placeholder="URL"
                 className="art-idiot-input"
                 style={{width: "25vw;"}}
+                onChange={event => setUserLink(event.target.value)}
               />
 
-              <Button
-                className="art-idiot-large-btn"
-                type="primary"
-                onClick={() => {queryBackend()}}
-              >
-                Отправить
-              </Button>
             </Col>
           </Row>
 
           <br/>
           <img
-            src={horse ? horse : default_horse}
+            src={userLink ? userLink : default_horse}
             alt="horse"
           />
         </TabPane>
 
-        <TabPane tab="Загрузка с локального устройства" key="2">
+      {/*  <TabPane tab="Загрузка с локального устройства" key="2">*/}
+      {/*    <Dragger {...props}>*/}
+      {/*      <p className="ant-upload-drag-icon">*/}
+      {/*        <InboxOutlined/>*/}
+      {/*      </p>*/}
+      {/*      <p className="ant-upload-text">Click or drag file to this area to upload</p>*/}
+      {/*      <p className="ant-upload-hint">*/}
+      {/*        Support for a single upload. Strictly prohibit from uploading company data or other*/}
+      {/*        band files*/}
+      {/*      </p>*/}
+      {/*    </Dragger>*/}
+      {/*  </TabPane>*/}
 
-          <Button
-            className="art-idiot-large-btn"
-            type="primary"
-            onClick={() => {
-            }}
-          >
-            Загрузить
-          </Button>
-
-        </TabPane>
       </Tabs>
 
       <Button
@@ -98,13 +116,17 @@ export const Zebrate: FC = () => {
         style={{
           margin: "18px 0 40px 0"
         }}
+        onClick={() => {
+          queryBackend()
+        }}
       >
         Генерация зебры
       </Button>
 
       <br/>
       <img
-        src={zebra ? zebra : default_zebra}
+        src={zebra ? `data:image/png;base64,${zebra}` : default_zebra}
+
         alt="zebra"
       />
       <br/>
@@ -115,17 +137,11 @@ export const Zebrate: FC = () => {
           style={{
             margin: "8px 0 0 0"
           }}
+          onClick={() => {
+            console.log(zebra)
+        }}
         >
           Сохранить
-        </Button>
-
-        <Button
-          className="art-idiot-medium-btn"
-          style={{
-            margin: "8px 0 0 0"
-          }}
-        >
-          Поделиться
         </Button>
       </Row>
     </>
