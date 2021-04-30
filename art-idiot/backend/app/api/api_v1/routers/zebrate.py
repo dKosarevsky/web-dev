@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Depends, Response, encoders, status
+from fastapi import APIRouter, Request, Depends, Response, encoders, HTTPException, status
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
@@ -6,7 +6,13 @@ from pydantic import BaseModel
 
 from datetime import datetime as dt
 
+from app.utils.zebrate import generate_zebra_from_link, generate_zebra_from_image, validate_url
+
 zebrate_router = r = APIRouter()
+
+
+class UserLink(BaseModel):
+    link: str
 
 
 class UserImage(BaseModel):
@@ -23,25 +29,30 @@ async def get_options():
     return JSONResponse(content=json_compatible_item_data)
 
 
+@r.post("/zebrate_link", status_code=status.HTTP_200_OK)
+async def genetate_zebra_from_link(user_link: UserLink):
+    user_link = user_link.link
+
+    horse_url = validate_url(user_link)
+    if horse_url is False:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Link did not pass validation. Your link: {user_link}"
+        )
+
+    zebra_img_bin, horse_img_bin = generate_zebra_from_link(horse_url)
+
+    data = {"zebra_img": zebra_img_bin}
+    json_compatible_item_data = jsonable_encoder(data)
+    return JSONResponse(content=json_compatible_item_data)
+
+
 @r.post("/zebrate")
-async def genetate_zebra(user_image: UserImage):
+async def genetate_zebra_from_image(user_image: UserImage):
     user_image = user_image.image
 
+    # TODO make generator from image great again
 
-    # if response.status_code in [200, ]:
-    #     response = response.json()
-    #     ai_answer = response.get("predictions")
-    #     if user_question == ai_answer[:len(user_question)]:
-    #         ai_answer = ai_answer[len(user_question):]
-    #
-    #     data = {"message": ai_answer}
-    #     json_compatible_item_data = jsonable_encoder(data)
-    #     return JSONResponse(content=json_compatible_item_data)
-    #
-    # return {"message": f"""
-    #             Что-то пошло не так...\n
-    #             Код ошибки: {response.status_code}\n
-    #             Текст ошибки: {response.text}\n
-    #         """}
+    zebra_img_bin, horse_img_bin = generate_zebra_from_image(user_image)
 
     return f"zebrate test {user_image}"
