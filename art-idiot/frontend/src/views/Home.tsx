@@ -1,37 +1,36 @@
 import React, {FC, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 
-import {getMessage} from '../utils/api';
 import {isAuthenticated} from '../utils/auth';
 
 import * as keys from "../routers/keys";
-import {Button} from "antd";
 
 const useStyles = makeStyles((theme) => ({
   link: {
-    color: '#61dafb',
+    color: '#0099FF',
   },
 }));
 
 export const Home: FC = () => {
-  const [message, setMessage] = useState<string>('');
-  const [error, setError] = useState<string>('');
   const classes = useStyles();
-
-  const queryBackend = async () => {
-    try {
-      const message = await getMessage();
-      setMessage(message);
-    } catch (err) {
-      setError(err);
-    }
-  };
+  const art_idiot = require("../images/art-idiot.jpg");
 
   return (
     <>
       <h1 className="art-idiot-h1">
         Artificial idiot
       </h1>
+
+      <div>
+        <img
+          style={{
+            position: "absolute",
+            right: "0",
+          }}
+          src={art_idiot}
+          alt="artificial idiot"
+        />
+      </div>
 
       {isAuthenticated() ? (
         <a className={classes.link} href={keys.LOGOUT}>
@@ -48,19 +47,7 @@ export const Home: FC = () => {
         </>
       )}
 
-      <Button
-        className="pushable"
-        style={{
-          margin: "18px 0 40px 0"
-        }}
-        onClick={() => queryBackend()}
-      >
-        <span className="shadow"></span>
-        <span className="edge"></span>
-        <span className="front">
-          Нажми Меня
-        </span>
-      </Button>
+
     </>
   );
 };
